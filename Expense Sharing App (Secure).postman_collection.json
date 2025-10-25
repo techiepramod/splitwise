@@ -1,0 +1,366 @@
+{
+	"info": {
+		"_postman_id": "2c1d2cb5-8eac-41c2-82f1-4ac83de66f1d",
+		"name": "Expense Sharing App (Secure)",
+		"description": "Secure Postman collection for expense-sharing backend with role-based access",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49400357"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/users?name=pramod1&email=pramod1@gmail.com&oauthId=o-1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "pramod1"
+						},
+						{
+							"key": "email",
+							"value": "pramod1@gmail.com"
+						},
+						{
+							"key": "oauthId",
+							"value": "o-1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Group",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"name\": \"Abu Dhabi Trip\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/groups",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"groups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add User to Group",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "1",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/groups/1/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"groups",
+						"1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Expense",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"1\": 50.00,\n    \"2\": 50.00,\n    \"3\": 50.00\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/expenses?groupId=1&creatorId=1&amount=150.00&description=Dinner at Burj Khalifa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"expenses"
+					],
+					"query": [
+						{
+							"key": "groupId",
+							"value": "1"
+						},
+						{
+							"key": "creatorId",
+							"value": "1"
+						},
+						{
+							"key": "amount",
+							"value": "150.00"
+						},
+						{
+							"key": "description",
+							"value": "Dinner at Burj Khalifa"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Group Expenses",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/expenses/group/1?email=pramod1@gmail.com",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"expenses",
+						"group",
+						"1"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "pramod1@gmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Settle Payment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/settlements?payerId=2&receiverId=1&groupId=1&amount=50.00",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"settlements"
+					],
+					"query": [
+						{
+							"key": "payerId",
+							"value": "2"
+						},
+						{
+							"key": "receiverId",
+							"value": "1"
+						},
+						{
+							"key": "groupId",
+							"value": "1"
+						},
+						{
+							"key": "amount",
+							"value": "50.00"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Group Balances",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/balances/group/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"balances",
+						"group",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin: Reset Group Balances",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/groups/1/reset",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"groups",
+						"1",
+						"reset"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin: Delete Group",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/admin/groups/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"groups",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
