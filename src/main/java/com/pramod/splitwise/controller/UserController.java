@@ -16,8 +16,8 @@ public class UserController {
     UserService userService;
 
     @PostMapping
-    public String settle(@RequestParam String name, @RequestParam String email, @RequestParam String oauthId) {
-        userService.saveUser(name, email, oauthId);
+    public String createUser(@RequestParam String name, @RequestParam String email, @RequestParam String oauthId, @RequestParam String role) {
+        userService.saveUser(name, email, oauthId, role);
         return "User Created";
     }
 

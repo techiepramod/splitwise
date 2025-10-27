@@ -23,7 +23,7 @@
 				"method": "POST",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/users?name=pramod1&email=pramod1@gmail.com&oauthId=o-1",
+					"raw": "http://localhost:8080/users?name=pramod1&email=pramod1@gmail.com&oauthId=o-1&role=USER",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -44,6 +44,10 @@
 						{
 							"key": "oauthId",
 							"value": "o-1"
+						},
+						{
+							"key": "role",
+							"value": "USER"
 						}
 					]
 				}

@@ -16,8 +16,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void saveUser(String name, String email, String oauthId){
-        userRepo.save(new User(name, email, oauthId, Role.USER));
+    public void saveUser(String name, String email, String oauthId, String role){
+        userRepo.save(new User(name, email, oauthId, Role.valueOf(role)));
     }
-
 }

@@ -27,13 +27,11 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
     @Override
     public OAuth2User loadUser(OAuth2UserRequest request) throws OAuth2AuthenticationException {
         OAuth2User oauthUser = delegate.loadUser(request);
-        Map<String, Object> attributes = oauthUser.getAttributes();
         String email = oauthUser.getAttribute("email");
         String name = oauthUser.getAttribute("name");
         String oauthId = oauthUser.getName();
         User user = userRepo.findByEmail(email)
                 .orElseGet(() -> userRepo.save(new User(name, email, oauthId, Role.USER)));
-
         return new DefaultOAuth2User(
                 Collections.singleton(new SimpleGrantedAuthority("ROLE_" + user.getRole())),
                 oauthUser.getAttributes(),

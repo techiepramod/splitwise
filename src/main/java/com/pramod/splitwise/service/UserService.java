@@ -4,5 +4,5 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface UserService {
     @Transactional
-    void saveUser(String name, String email, String oauthId);
+    void saveUser(String name, String email, String oauthId, String role);
 }
