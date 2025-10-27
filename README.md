@@ -42,6 +42,7 @@ spring:
 API Endpoints
 --------------------------------
 Method: POST, Endpoint:/users, Description:Create a new user, Role: USER
+
 Method: POST, Endpoint:/groups, Description:Create a new group, Role: USER
 
 Method: POST, Endpoint:/groups/{groupId}/users, Description: Add user to group, Role: USER
@@ -55,9 +56,6 @@ Method: POST, Endpoint:/settlements, Description:Settle payment, Role: USER
 Method: GET,  Endpoint:/balances/group/{groupId}, Description:Compute balances, Role: USER
 
 Method: POST, Endpoint:/admin/groups/{groupId}/reset, Description:Reset balances, Role: ADMIN
-<<<<<<< HEAD
-Method: DELETE, Endpoint:/admin/groups/{groupId}, Description:Delete group safely, Role: ADMIN 
-=======
 
-Method: DELETE, Endpoint:Delete group safely, Description: Role: ADMIN 
->>>>>>> 5667b8d (Updated)
+Method: DELETE, Endpoint:/admin/groups/{groupId}, Description:Delete group safely, Role: ADMIN 
+
